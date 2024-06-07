@@ -5,9 +5,28 @@ import cors from 'cors';
 
 const app = express();
 const server = http.createServer(app)
-const io = new socketServer(server)
 
-app.use(cors());
+const allowedOrigins = ['https://chat-web-sockets-ten.vercel.app'];
+
+const io = new socketServer(server, {
+    cors: {
+        origin: 'https://chat-web-sockets-ten.vercel.app',
+        methods: ['GET', 'POST'],
+        allowedHeaders: ['Content-Type'],
+        credentials: true
+    }
+});
+
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
 
 io.on('connection', socket => {
     console.log('User connected: ',socket.id)
