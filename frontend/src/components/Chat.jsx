@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Box, TextField, Button, List, ListItem, ListItemText, Paper, Grid } from '@mui/material';
 import io from 'socket.io-client';
 
-const socket = io('/');
+const socket = io('https://chatwebsockets-qoek.onrender.com');
 
 export const Chat = () => {
     const [messages, setMessages] = useState([]);
