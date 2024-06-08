@@ -54,8 +54,8 @@ export const Chat = () => {
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        width: '400px', // Establecer un ancho fijo para el contenedor del chat
-                        height: '400px', // Establecer una altura fija para el contenedor del chat
+                        width: '400px', 
+                        height: '400px',
                         p: 2,
                         backgroundColor: 'background.paper',
                         boxShadow: 3,
